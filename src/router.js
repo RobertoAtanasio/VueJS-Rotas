@@ -1,15 +1,28 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Inicio from './components/Inicio.vue'
-import Usuario from './components/usuario/Usuario.vue'
 import Menu from './components/templates/Menu.vue'
 import MenuAlt from './components/templates/MenuAlt.vue'
 
-import UsuarioLista from './components/usuario/UsuarioLista.vue'
-import UsuarioDetalhe from './components/usuario/UsuarioDetalhe.vue'
-import UsuarioEditar from './components/usuario/UsuarioEditar.vue'
+
+//--- da forma abaixo, os componentes são carregados quando da inicialização da aplicação
+// import Usuario from './components/usuario/Usuario.vue'
+// import UsuarioLista from './components/usuario/UsuarioLista.vue'
+// import UsuarioDetalhe from './components/usuario/UsuarioDetalhe.vue'
+// import UsuarioEditar from './components/usuario/UsuarioEditar.vue'
 
 Vue.use(Router)         // registrando o plugin Router
+
+// da forma abaixo, as importações só serão efetuadas a medida que os componentes são requisitados
+// pela primeira vez (carregamento de componentes dinâmicoss)
+// o trecho /* webpackChunkName: "usuario" */ significa que o sistema carregar todos os componentes
+// associadoas a esse comentário como um únici arquivo quando da chamada inicial.
+// Se não for colocado, o componente será importado quando chamado isoladamente pela primeira vez.
+
+const Usuario = () => import(/* webpackChunkName: "usuario" */'./components/usuario/Usuario.vue')
+const UsuarioLista = () => import(/* webpackChunkName: "usuario" */'./components/usuario/UsuarioLista.vue')
+const UsuarioDetalhe = () => import(/* webpackChunkName: "usuario" */'./components/usuario/UsuarioDetalhe.vue')
+const UsuarioEditar = () => import(/* webpackChunkName: "usuario" */'./components/usuario/UsuarioEditar.vue')
 
 // Para o uso do mode:'history' é necessário a configuração do servidor na qual você 
 // estiver usando para a aplicação. Ver configuração em 
