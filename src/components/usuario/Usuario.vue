@@ -5,7 +5,7 @@
         <!-- aqui será aplicada as rotas aninhadas de usuário -->
         <router-view />
         <!-- <p><strong>Código: </strong>{{ id }} </p> -->
-        <button sucesso @click="irParaInicio">Voltar</button>
+        <button sucesso @click="irParaInicio">Voltar em Usuário</button>
     </div>
 </template>
 
@@ -32,7 +32,8 @@ export default {
         irParaInicio() {
             // passa para o path e será navegado para o componente que tem o mesmo
             // this.$router.push('/')
-            this.$router.push({ path: '/'})
+            // this.$router.push({ path: '/'})
+            this.$router.push({ name: 'inicio'})
         }
     },
 }
